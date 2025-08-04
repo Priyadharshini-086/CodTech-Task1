@@ -40,10 +40,6 @@ public class FileHandlingUtility {
 
         scanner.close();
     }
-
-    /**
-     * Write content to a file (overwrites existing content).
-     */
     public static void writeToFile(Scanner scanner) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             System.out.println("Enter content to write to file:");
@@ -54,10 +50,6 @@ public class FileHandlingUtility {
             System.err.println("An error occurred during writing: " + e.getMessage());
         }
     }
-
-    /**
-     * Read content from a file.
-     */
     public static void readFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
@@ -71,10 +63,6 @@ public class FileHandlingUtility {
             System.err.println("An error occurred during reading: " + e.getMessage());
         }
     }
-
-    /**
-     * Modify content of a file by replacing a word or phrase.
-     */
     public static void modifyFile(Scanner scanner) {
         try {
             // Read original content
@@ -91,17 +79,11 @@ public class FileHandlingUtility {
                 content.append(fileScanner.nextLine()).append("\n");
             }
             fileScanner.close();
-
-            // Get words to replace
             System.out.print("Enter word to be replaced: ");
             String oldWord = scanner.nextLine();
             System.out.print("Enter new word: ");
             String newWord = scanner.nextLine();
-
-            // Replace content
             String updatedContent = content.toString().replace(oldWord, newWord);
-
-            // Write back to file
             FileWriter writer = new FileWriter(FILE_NAME);
             writer.write(updatedContent);
             writer.close();
@@ -113,3 +95,4 @@ public class FileHandlingUtility {
         }
     }
 }
+
